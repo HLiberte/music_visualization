@@ -1,4 +1,10 @@
-# 网易云音乐歌单爬取及可视化
+# 网易云音乐歌单爬取及可视化(python)
+# 需要的库：
+  bs4，requests，time，pandas，sqlalchemy，pymysql，flask，json，flask_cors，
+  安装命令 pip install 库名 ；
+  如： pip install time;
+# 数据库:
+  mysql
 # 数据爬取：
  clear/url_crawl.py和clear/2page_crawl.py;
 # 数据清洗：
