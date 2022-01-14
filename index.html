@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>网易云音乐歌单数据展示</title>
+    <script type="text/javascript" src='./js/echarts.min.js'></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src='./js/echarts-wordcloud.js'></script>
+    <script type="text/javascript" src="./js/count.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<script>
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({fontSize: whei / 20})
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({fontSize: whei / 20})
+        });
+
+    });
+
+
+</script>
+<script src="js/js.js"></script>
+<body>
+<div id="load">
+    <div class="load_img">
+        <img class="jzxz1" src="images/jzxz1.png">
+        <img class="jzxz2" src="images/jzxz2.png">
+    </div>
+</div>
+<div class="total">
+    <canvas class="rain"></canvas>
+</div>
+
+
+<div class="head">
+    <div id="title">
+        <h1><span>网易云音乐歌单数据展示</span></h1>
+        <p><span>2021年6月-2021年12月</span></p>
+    </div>
+    <div class="weather"><span id="showTime"></span></div>
+
+    <script>
+        var t = null;
+        t = setTimeout(time, 1000);
+        function time() {
+            clearTimeout(t);
+            dt = new Date();
+            var y = dt.getFullYear();
+            var mt = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var h = dt.getHours();
+            var m = dt.getMinutes();
+            var s = dt.getSeconds();
+            document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "-" + h + "时" + m + "分" + s + "秒";
+            t = setTimeout(time, 1000);
+        }
+        setInterval(time,1000)
+
+    </script>
+
+
+</div>
+
+<div class="mainbox">
+    <ul class="clearfix">
+        <li>
+            <div class="boxall" style="height: 4.1rem;width:6rem">
+                <div class="alltitle">播放量榜单TOP10</div>
+                <div class="allnav" id="echart1"></div>
+                <div class="boxfoot"></div>
+            </div>
+            <div class="boxall" style="height: 3.6rem;width:6rem">
+                <div class="alltitle">每月发布歌单数据</div>
+                <div class="allnav" id="echart2"></div>
+                <div class="boxfoot"></div>
+            </div>
+        </li>
+        <li>
+            <div id="c1">
+                <div class="bar">
+                    <div class="barbox ">
+                        <ul class="clearfix">
+                            <li class="pulll_left counter count_shouchang" id="all_shouchang_num"></li>
+                            <li class="pulll_left counter count_transform" id="all_transform_num"></li>
+                        </ul>
+                    </div>
+                    <div class="barbox2">
+                        <ul class="clearfix">
+                            <li class="pulll_left">总收藏量</li>
+                            <li class="pulll_left">总转发量</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bar">
+                    <div class="barbox">
+                        <ul class="clearfix">
+                            <li class="pulll_left counter count_pinglun" id="all_pinglun_num"></li>
+                            <li class="pulll_left counter count_music" id="all_music_num"></li>
+                        </ul>
+                    </div>
+                    <div class="barbox2">
+                        <ul class="clearfix">
+                            <li class="pulll_left">总评论次数</li>
+                            <li class="pulll_left">总歌曲数</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="rose">
+                <div class="rose2" id="echart4"></div>
+            </div>
+        </li>
+        <li>
+            <div class="boxall" style="height: 4.2rem">
+                <div class="alltitle">评论转发数据统计</div>
+                <div class="allnav" id="echart3"></div>
+                <div class="boxfoot"></div>
+            </div>
+            <div class="boxall" style="height: 3.5rem">
+                <div class="alltitle">创建歌单数量作者词云图</div>
+                <div class="allnav" id="wordCloud">
+
+                </div>
+
+                <div class="boxfoot"></div>
+            </div>
+        </li>
+
+    </ul>
+
+
+</div>
+<div class="back"></div>
+<span id="countFlag"></span>
+<div id="bottom">
+    <h5><span>数据状况</span></h5>
+    <p>Data Status</p>
+</div>
+<span id="test"></span>
+
+</body>
+<script type="text/javascript">
+
+
+    var time = setInterval(function () {
+        count = $('#countFlag').text()
+        if (count == '5') {
+            $('#load').fadeOut(500)
+            setTimeout(function () {
+                    $('#load').remove()
+                }
+                , 510);
+        }
+    }, 1000);
+
+</script>
+</html>
