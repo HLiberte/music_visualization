@@ -7,8 +7,8 @@
   mysql
 # 1、数据爬取：
  clear/url_crawl.py和clear/2page_crawl.py;
-# /2、数据清洗：
+# 2、数据清洗：
   data_processing.py
-# /3、数据可视化：
+# 3、数据可视化：
   除clear以外文件；
  
